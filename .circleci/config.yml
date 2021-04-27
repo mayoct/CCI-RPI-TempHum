@@ -1,0 +1,35 @@
+version: 2
+
+jobs:
+  test_on_arm-runner:
+    machine: true
+    resource_class: mayoct/arm-runner
+    steps:
+      - checkout
+      - run:
+          command: |
+            mkdir -p tmp
+            python grove_dht_pro.py > tmp/sensor.txt
+      - persist_to_workspace:
+          root: .
+          paths:
+            - "tmp"
+  review_on_cloud:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run:
+          command: |
+            cat tmp/sensor.txt
+
+workflows:
+  version: 2
+  runner-workflow:
+    jobs:
+      - test_on_arm-runner
+      - review_on_cloud:
+          requires:
+            - test_on_arm-runner
