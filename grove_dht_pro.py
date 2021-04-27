@@ -37,22 +37,20 @@ THE SOFTWARE.
 import grovepi
 import math
 import time
-# Connect the Grove Temperature & Humidity Sensor Pro to digital port D4
-# This example uses the blue colored sensor.
+# Grove Temperature & Humidity Sensor Pro を デジタルポート D3 に接続します。
+# このサンプルでは、白い色のセンサーを使用しています。
 # SIG,NC,VCC,GND
-sensor = 2  # The Sensor goes on digital port 2.
+sensor = 3  # センサーの接続先はデジタルポート 3
 
 # temp_humidity_sensor_type
-# Grove Base Kit comes with the blue sensor.
-blue = 0    # The Blue colored sensor.
-white = 1   # The White colored sensor.
+blue = 0    # 青色のセンサーを使用
+white = 1   # 白色のセンサーを使用
 
 i = 0
 
 while i < 10:
     try:
-        # This example uses the white colored sensor. 
-        # The first parameter is the port, the second parameter is the type of sensor.
+        # 第１引数は接続ポート、第２引数はセンサー種別
         [temp,humidity] = grovepi.dht(sensor,white)  
         if math.isnan(temp) == False and math.isnan(humidity) == False:
             print("temp = %.02f C humidity =%.02f%%"%(temp, humidity), flush=True)
