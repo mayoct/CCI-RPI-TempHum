@@ -59,8 +59,8 @@ while i < 10:
         [temp,humidity] = grovepi.dht(sensor,white)  
         if math.isnan(temp) == False and math.isnan(humidity) == False:
             print("temp = %.02f C humidity =%.02f%%"%(temp, humidity), flush=True)
-            setText("CircleCI Runner\n%.02f C, %.02f %%"%(temp, humidity))
-            setRGB(c[i][0], c[i][1], c[i][2])
+            //setText("CircleCI Runner\n%.02f C, %.02f %%"%(temp, humidity))
+            //setRGB(c[i][0], c[i][1], c[i][2])
     except IOError:
         print ("Error")
     finally:
