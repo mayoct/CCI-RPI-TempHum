@@ -37,6 +37,8 @@ THE SOFTWARE.
 import grovepi
 import math
 import time
+from grove_rgb_lcd import *
+
 # Grove Temperature & Humidity Sensor Pro を デジタルポート D3 に接続します。
 # このサンプルでは、白い色のセンサーを使用しています。
 # SIG,NC,VCC,GND
@@ -46,6 +48,9 @@ sensor = 3  # センサーの接続先はデジタルポート 3
 blue = 0    # 青色のセンサーを使用
 white = 1   # 白色のセンサーを使用
 
+# 背景色
+bgcolor = [[0,255,0],[255,0,0],[0,255,0],[0,0,255],[255,255,0],[255,0,255],[0,255,255],[255,255,255],[0,0,0],[127,127,127]]
+
 i = 0
 
 while i < 10:
@@ -54,6 +59,8 @@ while i < 10:
         [temp,humidity] = grovepi.dht(sensor,white)  
         if math.isnan(temp) == False and math.isnan(humidity) == False:
             print("temp = %.02f C humidity =%.02f%%"%(temp, humidity), flush=True)
+            setText("CircleCI Runner\n%.02f C, %.02f %%"%(temp, humidity))
+            setRGB(c[i][0], c[i][1], c[i][2])
     except IOError:
         print ("Error")
     finally:
