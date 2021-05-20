@@ -42,7 +42,7 @@ from grove_rgb_lcd import *
 # Grove Temperature & Humidity Sensor Pro を デジタルポート D3 に接続します。
 # このサンプルでは、白い色のセンサーを使用しています。
 # SIG,NC,VCC,GND
-sensor = 3  # センサーの接続先はデジタルポート 3
+sensor = 2  # センサーの接続先はデジタルポート 2
 
 # temp_humidity_sensor_type
 blue = 0    # 青色のセンサーを使用
