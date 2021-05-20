@@ -60,7 +60,7 @@ while i < 10:
         if math.isnan(temp) == False and math.isnan(humidity) == False:
             print("temp = %.02f C humidity =%.02f%%"%(temp, humidity), flush=True)
             setText("CircleCI Runner\n%.02f C, %.02f %%"%(temp, humidity))
-            setRGB(c[i][0], c[i][1], c[i][2])
+            setRGB(bgcolor[i][0], bgcolor[i][1], bgcolor[i][2])
     except IOError:
         print ("Error")
     finally:
